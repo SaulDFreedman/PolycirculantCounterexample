@@ -183,10 +183,11 @@ procedure PolycirculantCounterexample(:graph:=true,overgroups:=true)
 			
 		end for;
 		
-		"Veriyfying that the seven orbital graphs are all connected and pairwise non-isomorphic.";
+		"Veriyfying that the seven orbital graphs are all connected and pairwise non-isomorphic with valency 63.";
 		
 		assert forall{i:i in Grs|IsConnected(i)};
 		assert forall{[i,j]:i in [1..#Grs],j in [1..#Grs]|i eq j or not IsIsomorphic(Grs[i],Grs[j])};
+		assert forall{i:i in Grs|Valence(i) eq 63};
 		
 		"Verifying that, in each graph, no two vertices have the same closed neighbourhood.";
 		// Since each graph is vertex-transitive, it suffices to show that the closed neighbourhood of a
