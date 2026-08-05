@@ -173,7 +173,8 @@ procedure PolycirculantCounterexample(:graph:=true,overgroups:=true)
 		
 			Gr:=Graph<Degree(X)|Set(O)^X>;
 			
-			// It is much faster here to use Traces algorithms than the default nauty algorithms.
+			// We use the Traces algorithms, allowing the automorphism group of any of our graphs to be calculated within a few minutes.
+			// Calculations involving the default nauty algorithms take nearly eight days for at least one of these graphs.
 			Aut:=AutomorphismGroup(Gr:Al:="Traces");
 			assert Aut eq X;
 			
