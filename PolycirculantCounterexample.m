@@ -12,7 +12,7 @@ Approximate computational requirements: 35 minutes (with a 3.85 GHz processor) a
 If overgroups is set to false, 13 minutes and 0.8 GB of RAM are required.
 If graph is set to false, 25 minutes and 15 GB of RAM are required.
 
-Last updated: 25 July 2026.
+Last updated: 16 October 2026.
 */
 
 procedure PolycirculantCounterexample(:graph:=true,overgroups:=true)
@@ -173,7 +173,10 @@ procedure PolycirculantCounterexample(:graph:=true,overgroups:=true)
 		
 			Gr:=Graph<Degree(X)|Set(O)^X>;
 			
-			// We use the Traces algorithms, allowing the automorphism group of any of our graphs to be calculated within a few minutes.
+			// We use the Traces algorithm, allowing the automorphism group of any of our graphs to be calculated within a few minutes.
+			// As of Magma V2.29-10, the Traces algorithm may not function correctly for certain graphs. However, this does not seem to
+			// apply to the graphs here. Indeed, we have verified each automorphism group calculation here using the nauty algorithm.
+			
 			Aut:=AutomorphismGroup(Gr:Al:="Traces");
 			assert Aut eq X;
 			
